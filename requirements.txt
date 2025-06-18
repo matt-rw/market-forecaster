@@ -1,0 +1,9 @@
+Django
+djangorestframework
+celery
+redis
+yfinance
+torch
+uvicorn[standard]
+
+
