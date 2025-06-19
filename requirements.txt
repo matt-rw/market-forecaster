@@ -1,9 +1,10 @@
 Django
 djangorestframework
-celery
+celery[redis]
 redis
 yfinance
 torch
 uvicorn[standard]
+psycopg[binary]
 
 

@@ -7,10 +7,16 @@ services:
     ports:
       - "8000:8000"
     depends_on:
+      - db
       - redis
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_BROKER_BACKEND=redis://redis:6379/1
+      - DATABASE_NAME=market_db
+      - DATABASE_USER=market_user
+      - DATABASE_PASSWORD=password
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
 
   redis:
     image: redis:7-alpine
@@ -25,7 +31,42 @@ services:
     depends_on:
       - django
       - redis
+      - db
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - DATABASE_NAME=market_db
+      - DATABASE_USER=market_user
+      - DATABASE_PASSWORD=password
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
 
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: market_db
+      POSTGRES_USER: market_user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+  grafana:
+    image: grafana/grafana:10.0.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - db
+
+volumes:
+  grafana-storage:
+  pgdata:

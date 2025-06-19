@@ -8,7 +8,7 @@ from .models import Index, MarketData
 def fetch_market_data():
     for index in Index.objects.all():
         ticker = yf.Ticker(index.symbol)
-        hist = ticker.history(period='7d')  # last 30 days of data
+        hist = ticker.history(period='365d')  # last 30 days of data
 
         for date, row in hist.iterrows():
             MarketData.objects.update_or_create(
