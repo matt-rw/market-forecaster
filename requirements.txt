@@ -6,5 +6,9 @@ yfinance
 torch
 uvicorn[standard]
 psycopg[binary]
+scikit-learn
 
+# CLI
+cmd2
+rich
 

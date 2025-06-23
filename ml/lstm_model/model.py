@@ -8,7 +8,9 @@ class LSTMRegressor(nn.Module):
         self.fc = nn.Linear(hidden_dim, 1)  # fully-connected layer
 
     def forward(self, x):
+        # x shape: (batch_size, seq_len, input_dim)
         out, _ = self.lstm(x)
+        # output at last time step
         out = out[:, -1, :]
         out = self.fc(out)
         return out.squeeze(-1)

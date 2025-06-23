@@ -67,6 +67,17 @@ services:
     depends_on:
       - db
 
+  cli:
+    build:
+      context: .
+    command: python -m cli
+    volumes:
+      - .:/app
+    depends_on:
+      - django
+    stdin_open: true
+    tty: true
+
 volumes:
   grafana-storage:
   pgdata:

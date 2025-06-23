@@ -6,8 +6,8 @@ from .preprocessing import load_and_preprocess
 
 class MarketSequenceDataset(Dataset):
     def __init__(self, features, targets, seq_len=20):
-        self.features = torch.tensor(features, dtype=torch.float32)
-        self.targets = torch.tensor(features, dtype=torch.float32)
+        self.features = torch.tensor(features.values, dtype=torch.float32)
+        self.targets = torch.tensor(targets, dtype=torch.float32)
         self.seq_len = seq_len
 
     def __len__(self):
@@ -19,7 +19,7 @@ class MarketSequenceDataset(Dataset):
         return x_seq, y
 
 
-def load_datasets():
+def load_datasets(seq_len):
     X_train, X_val, y_train, y_val = load_and_preprocess()
 
     train_ds = MarketSequenceDataset(X_train, y_train, seq_len=seq_len)
