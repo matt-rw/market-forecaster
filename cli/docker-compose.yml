@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: python -m cli
+    # command: python -m cli
     volumes:
       - .:/app
     working_dir: /app

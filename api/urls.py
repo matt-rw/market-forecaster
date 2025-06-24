@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import FetchMarketDataView
+
+from .views import (
+    FetchMarketDataView,
+    IndexListCreateView
+)
 
 
 urlpatterns = [
@@ -12,5 +16,6 @@ urlpatterns = [
         'compute-technical-indicators/',
         FetchMarketDataView.as_view(), 
         name='compute-technical-indicators'
-    )
+    ),
+    path('indexes/', IndexListCreateView.as_view(), name='index-list-create')
 ]
