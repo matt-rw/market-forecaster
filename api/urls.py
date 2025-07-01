@@ -17,5 +17,10 @@ urlpatterns = [
         FetchMarketDataView.as_view(), 
         name='compute-technical-indicators'
     ),
-    path('indexes/', IndexListCreateView.as_view(), name='index-list-create')
+    path('indexes/', IndexListCreateView.as_view(), name='index-list-create'),
+    path(
+        'marketdata/',
+        MarketDataListCreateView.as_view(),
+        name='marketdata-list-create'
+    ),
 ]
