@@ -30,20 +30,18 @@ class MarketCommandSet(CommandSet):
 
         response = self._cmd.client.post('api/indexes/', data=data)
         response_json = response.json()
-        self._cmd.poutput(response_json)]
-    
+        self._cmd.poutput(response_json)
+   
+   @with_argparser(prices_parser())
     def do_prices(self, args):
         """Show prices by index or date."""
-        if args.index:
-            pass
         data = {
             'index': args.index
         }
 
         response = self._cmd.client.get(
-            'api/marketdata',
-            data=data
-        }
+            f'api/marketdata/?index={args.index}',
+        )
         print(response.json())
 
 

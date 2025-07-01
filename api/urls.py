@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import (
     FetchMarketDataView,
-    IndexListCreateView
+    IndexListCreateView,
+    MarketDataListCreateView
 )
 
 
@@ -23,4 +24,5 @@ urlpatterns = [
         MarketDataListCreateView.as_view(),
         name='marketdata-list-create'
     ),
+    path('marketdata/', MarketDataRetrieveView.as_view(), name='marketdata-retrieve')
 ]
