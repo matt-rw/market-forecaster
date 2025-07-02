@@ -1,8 +1,7 @@
 from celery import shared_task
 import pandas as pd
 
-from market.models import MarketData, Index
-from .models import TechnicalIndicator
+from market.models import MarketData, Index, TechnicalIndicator
 
 
 @shared_task
