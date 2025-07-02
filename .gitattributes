@@ -1,2 +1,2 @@
 # Ignore static files from repo language statistics
-staticfiles/* linguist-vendored
+market_forecaster/staticfiles/** linguist-vendored
