@@ -5,9 +5,8 @@ from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from market.tasks import fetch_market_data
+from market.tasks import compute_technical_indicators, fetch_market_data
 from market.models import Index, MarketData
-from ml.tasks import compute_technical_indicators
 from .serializers import IndexSerializer, MarketDataSerializer
 
 

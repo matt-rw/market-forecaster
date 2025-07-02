@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from market.models import Index, MarketData
+from market.models import Index, MarketData, TechnicalIndicator
 
 
 class IndexSerializer(ModelSerializer):
@@ -12,5 +12,5 @@ class IndexSerializer(ModelSerializer):
 class MarketDataSerializer(ModelSerializer):
     class Meta:
         model = MarketData
-        fields = ['index', 'date', 'open_price', 'close_price']
+        fields = ['id', 'index', 'date', 'open_price', 'close_price']
 
