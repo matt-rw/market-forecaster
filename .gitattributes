@@ -1,0 +1,2 @@
+# Ignore static files from repo language statistics
+staticfiles/* linguist-vendored
