@@ -3,7 +3,7 @@ from pyfiglet import figlet_format
 from httpx import Client
 from rich.console import Console
 
-from .commands import MarketCommandSet
+from .commands.commands import MarketCommandSet
 
 
 class MarketCLI(Cmd):

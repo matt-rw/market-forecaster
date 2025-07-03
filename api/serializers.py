@@ -12,5 +12,8 @@ class IndexSerializer(ModelSerializer):
 class MarketDataSerializer(ModelSerializer):
     class Meta:
         model = MarketData
-        fields = ['id', 'index', 'date', 'open_price', 'close_price']
+        fields = [
+            'id', 'index', 'date', 'open_price', 'high_price',
+            'low_price', 'close_price'
+        ]
 

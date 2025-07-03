@@ -2,4 +2,5 @@ cmd2
 httpx
 rich
 pyfiglet
+plotext
 
