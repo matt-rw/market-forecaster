@@ -86,7 +86,8 @@ class MarketCommandSet(CommandSet):
             data['High'].append(price['high_price'])
             data['Low'].append(price['low_price'])
             data['Close'].append(price['close_price'])
-
+        
+        # plt.plotsize(60, 15)
         plt.candlestick(dates, data)
         plt.title(f'Chart for {args.asset}')
         plt.show()

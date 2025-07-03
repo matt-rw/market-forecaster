@@ -2,7 +2,7 @@
 
 from cmd2 import Cmd2ArgumentParser
 
-from .utils import price_table_type
+from .utils import price_table_type, price_time_type
 
 
 def add_pagination(parser):
@@ -22,6 +22,12 @@ def prices_parser():
     parser = Cmd2ArgumentParser()
     parser = add_pagination(parser)
     parser.add_argument('asset')
+    parser.add_argument(
+        '-t',
+        '--time',
+        default='1m',
+        type=price_time_type
+    )
     # todo: allow re-ordering
     # todo: add options to help
     parser.add_argument(
