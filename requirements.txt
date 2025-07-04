@@ -8,4 +8,5 @@ uvicorn[standard]
 psycopg[binary]
 scikit-learn
 django-celery-beat
+django-filter
 

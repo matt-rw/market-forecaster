@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.views import APIView
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from rest_framework.response import Response
@@ -38,6 +38,8 @@ class IndexListCreateView(ListCreateAPIView):
 class MarketDataListCreateView(ListCreateAPIView):
     queryset = MarketData.objects.all()
     serializer_class = MarketDataSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['index',]
 
 
 class MarketDataRetrieveView(RetrieveAPIView):
