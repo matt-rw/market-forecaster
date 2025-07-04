@@ -41,6 +41,23 @@ services:
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
 
+  celery-beat:
+    build: .
+    command: celery -A market_forecaster beat --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - django
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - DATABASE_NAME=market_db
+      - DATABASE_USER=market_user
+      - DATABASE_PASSWORD=password
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+
   db:
     image: postgres:15
     restart: always
