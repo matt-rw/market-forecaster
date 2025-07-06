@@ -3,6 +3,7 @@ import plotext as plt
 from rich.table import Table
 
 from ..args import (
+    indicators_parser,
     new_asset_parser,
     plot_parser,
     prices_parser
@@ -60,7 +61,7 @@ class MarketCommandSet(CommandSet):
         table = Table(title=f'Prices for {args.asset}')
         table.add_column('Date')
         for col in args.columns:
-            table.add_column(col)
+            table.add_column(col.capitalize())
         for price in prices:
             table.add_row(
                 price['date'],
@@ -98,6 +99,27 @@ class MarketCommandSet(CommandSet):
     def do_watchlist(self, args):
         """View, create, or remove a watchlist."""
         pass
+    
+    @with_argparser(indicators_parser())
+    def do_indicators(self, args):
+        """Display a table of indictors."""
 
+        indicators = self._cmd.client.get(f'api/technicalindicators/?index={args.asset}')
+    
+        table = Table(title=f'Indicators for {args.asset}')
+        columns = ['Date', 'RSI', 'MACD', 'MACD Signal', 'SMA 20', 'SMA 50']
+        for col in columns:
+            table.add_column(col)
+        for indicator in indicators.json():
+            table.add_row(
+                indicator['date'],
+                str(indicator['rsi']),
+                str(indicator['macd']),
+                str(indicator['macd_signal']),
+                str(indicator['sma_20']),
+                str(indicator['sma_50'])
+            )
+        
+        self._cmd.console.print(table)
 
 

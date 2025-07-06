@@ -43,3 +43,9 @@ def plot_parser():
     parser = Cmd2ArgumentParser()
     parser.add_argument('asset')
     return parser
+
+
+def indicators_parser():
+    parser = Cmd2ArgumentParser()
+    parser.add_argument('asset')
+    return parser

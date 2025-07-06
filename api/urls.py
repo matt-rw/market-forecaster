@@ -4,7 +4,9 @@ from .views import (
     FetchMarketDataView,
     IndexListCreateView,
     MarketDataListCreateView,
-    MarketDataRetrieveView
+    MarketDataRetrieveView,
+    MarketDataListView,
+    TechnicalIndicatorListView
 )
 
 
@@ -22,8 +24,13 @@ urlpatterns = [
     path('indexes/', IndexListCreateView.as_view(), name='index-list-create'),
     path(
         'marketdata/',
-        MarketDataListCreateView.as_view(),
+        MarketDataListView.as_view(),
         name='marketdata-list-create'
     ),
-    path('marketdata/', MarketDataRetrieveView.as_view(), name='marketdata-retrieve')
+    path('marketdata/', MarketDataRetrieveView.as_view(), name='marketdata-retrieve'),
+    path(
+        'technicalindicators/', 
+        TechnicalIndicatorListView.as_view(), 
+        name='technical-indicators-list'
+    )
 ]
