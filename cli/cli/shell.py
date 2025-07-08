@@ -4,6 +4,7 @@ from httpx import Client
 from rich.console import Console
 
 from .commands.commands import MarketCommandSet
+from .commands.ml import MLCommands
 
 
 class MarketCLI(Cmd):

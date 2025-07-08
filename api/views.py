@@ -68,7 +68,6 @@ class TechnicalIndicatorListView(ListAPIView):
         output = task.get()  # blocking
         queryset = TechnicalIndicator.objects.all()
         index = self.request.query_params.get('index')
-        print(index)
         if index:
             queryset = queryset.filter(index__id=int(index))
         return queryset
