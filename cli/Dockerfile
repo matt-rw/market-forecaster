@@ -8,6 +8,7 @@ WORKDIR /app
 
 COPY requirements-cli.txt /app/
 RUN pip install --upgrade pip && pip install -r requirements-cli.txt
+RUN apt-get update && apt-get install -y vim
 
 COPY . /app/
 
