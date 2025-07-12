@@ -38,6 +38,9 @@ class MarketCommandSet(CommandSet):
         response_json = response.json()
         self._cmd.poutput(response_json)
 
+    def do_delete_asset(self, args):
+        pass
+
     def _get_prices(self, asset: str) -> dict:
         response = self._cmd.client.get(
             f'api/marketdata/?index={asset}',
