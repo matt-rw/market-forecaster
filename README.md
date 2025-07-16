@@ -19,6 +19,19 @@
 | macd              |                                     |
 | price             |                                     |
 
+## Building a Dataset
+
+``export SYMBOL``
+
+## Upload a Model
+
+``upload path/to/model NAME SYMBOL``
+
+``list_models --filter SYMBOL
+
+``pred MODELNAME``
+
+
 
 Examples:
 
