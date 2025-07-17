@@ -13,7 +13,7 @@ from ..args import (
 @with_default_category('Market')
 class MarketCommandSet(CommandSet):
     
-    def do_assets(self, _):
+    def do_list_assets(self, _):
         response = self._cmd.client.get('api/indexes/')
         indexes = response.json()
         
@@ -31,7 +31,7 @@ class MarketCommandSet(CommandSet):
 
 
     @with_argparser(new_asset_parser())
-    def do_add_asset(self, args):
+    def do_new_asset(self, args):
         data = {'symbol': args.symbol, 'name': args.name}
 
         response = self._cmd.client.post('api/indexes/', data=data)
@@ -125,4 +125,15 @@ class MarketCommandSet(CommandSet):
         
         self._cmd.console.print(table)
 
+    def do_rsi(self, args):
+        """Show table or plot historical RSI"""
+        pass
 
+    def do_macd(self, args):
+        pass
+
+    def do_sma20(self, args):
+        pass
+
+    def do_sma50(self, args):
+        pass
